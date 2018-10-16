@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>{% block title %}{{ com_name }}{% endblock %}</title>
+
+<link href="{% static 'css/style.css' %}" rel=stylesheet>
+<script type="text/javascript" src="{% static 'js/jquery-1.7.2.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}" type="text/javascript"></script>
+<script type="text/javascript" src="{% static 'js/index_brand.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.superslide.js' %}"></script>
+{% block css %}{% endblock %}
+<!--[if IE 6]><script type="text/javascript" src="{% static 'js/dd_belatedpng.js' %}"></script>
+<script type="text/javascript">
+		DD_belatedPNG.fix('img');
+	</script>
+<![endif]-->
+
+</head>
+
+{% block header %}
+    <div class="header">
+  <div class="header01">
+    <div class="logo"><a href="/index/" ><img src="{% static 'images/logo/logo_new.png' %}" width="218" height="65" class="png" /></a></div>
+    <div class="nav">
+     <ul>
+       <li><a href="/index">首页<span>HOME</span></a></li>
+         <li><a href="#关于我们">关于我们</a><span>ABOUT US</span></li>
+         <li><a href="#新闻中心">新闻中心</a><span>NEWS</span></li>
+         <li><a href="#案例展示">案例展示</a><span>CASE</span></li>
+         <li><a href="/joinus">加入我们<span>JOIN US</span></a></li>
+         <li><a href="#联系我们">联系我们</a><span>CONTACT</span></li>
+{#       <li><a href="about.html">关于我们<span>ABOUT US</span></a></li>#}
+{#       <li><a href="list.html">新闻中心<span>NEWS</span></a></li>#}
+{#       <li><a href="product.html">案例展示<span>CASE</span></a></li>#}
+
+{#       <li><a href="">联系我们<span>CONTACT</span></a></li>#}
+     </ul>
+    </div>
+    <div class="tel">{{ CONTACT_TEL }}<br /></div>
+{#      <div>{{ login_user }}{{ logout_link }}</div>#}
+  </div>
+</div>
+{% endblock %}
+
+{% block body %}
+
+
+<body>
+
+
+{% endblock %}
+
+{% block scirpt %}
+{#    <script type="text/javascript" src="{% static 'js/banner.js' %}"></script>#}
+{% endblock %}
+
+{% block footer %}
+    <div class="footer">
+        <div class="footer01">
+            <a name="联系我们"></a>
+            <div class="footer02">
+
+                <br />
+             热线电话：022-87921628<br/>
+             邮    箱：394482418@qq.com（齐先生）<br/>
+             手机：13352096270（殷先生） 13512271307（齐先生）<br />
+                地址：天津市西青经济技术开发区鑫源道11号
+             &nbsp邮编：300385<br/>
+             版权所有：天津消安保安服务有限公司<br />
+    {#         <a href="">ICP备案编号：XXXX</a>&nbsp;&nbsp;&nbsp;#}
+    {#         技术支持：<a href="">某某网络公司</a>#}
+            </div>
+            <div style="width:20%;margin:0 auto; padding:20px 0;">
+                <img src="{% static 'images/beian.png' %}">
+		 		<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12011102000316" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">津公网安备 12011102000316号</p></a>
+		 	</div>
+
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,126 @@
+{% extends 'basehtml.html' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block css %}
+<style type="text/css">
+.register_page{
+
+{#    background-color: #0EA347;#}
+    height: auto;
+    width: 1000px;
+    overflow: auto;
+    line-height: 30px;
+    font-size: 20px;
+}
+.form_row {
+            overflow: hidden;
+            padding: 10px;
+            font-size: 15px;
+            border-bottom: 1px solid #eee;
+        }
+.detial_lable{
+            display: block;
+            padding: 4px 30px 0 0;
+            float: left;
+            width: 100px;
+            line-height: 2;
+            text-align:left;
+        }
+.detial_info{
+            display: block;
+            padding: 4px 30px 0 0;
+            float: left;
+            width: 600px;
+            line-height: 2;
+            text-align:left;
+            text
+
+}
+.reg_line label{
+    margin-right: 20px;
+    width: 50px;
+}
+.input_default{
+    margin: 0 0 0 8px;
+    text-transform: uppercase;
+    float: left;
+    border: none;
+    font-weight: 400;
+
+    background: #79aec8;
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+.input_default:hover{
+    background: #417690;
+}
+.submit_row {
+    padding: 12px 14px;
+    margin: 0 0 20px;
+    background: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    text-align: right;
+    overflow: hidden;
+}
+.inner_container{
+{#    background-color: #0FA74E;#}
+    width: 800px;
+    height: auto;
+{#    margin-left: 10px;#}
+    line-height: 30px;
+}
+
+</style>
+{% endblock %}
+{% block body %}
+    <div class="sub_cont">
+      <div class="sub_cont01">
+    <div><img src="/static/images/sub01.png" width="1100" height="6" alt="line" /></div>
+    <div class="sub_cont02">
+      <div class="sub_cont03">
+        <div class="sider">
+
+                    <div class="sub_tit"><span>您的位置：</span><a href="/index/">首页</a>>{{ title }} </div>
+             <div class="register_page">
+                 <div class="inner_container">
+                    {% for i in info %}
+                        <div class="form_row ">
+                            <div>
+                                <label class="detial_lable">{{ i.0 }}</label>
+                                <label class="detial_info">{{ i.1 }}</label>
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                 </div>
+
+
+
+             </div>
+        <div class="sub_right clearfix">
+
+            </div>
+
+
+{#              <div class="Pages clearfix">#}
+{#                 <span>46 条记录 1/6 页</span>  <a href="">下一页</a>#}
+{#                 <span class="current">1</span>#}
+{#                 <a href="">&nbsp;2&nbsp;</a>#}
+{#                 <a href="">&nbsp;3&nbsp;</a>#}
+{#                 <a href="">&nbsp;4&nbsp;</a>#}
+{#                 <a href="">&nbsp;5&nbsp;</a>#}
+{#                 <a href="">下5页</a>#}
+{#                 <a href="">末页</a>#}
+{#              </div>#}
+        </div>
+        <div><img src="/static/images/sub02.png" width="1100" height="6" alt="line"></div>
+       </div>
+     </div>
+    </div>
+  </div>
+
+{% endblock %}

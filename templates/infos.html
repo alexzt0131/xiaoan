@@ -1,0 +1,137 @@
+{% extends 'basehtml.html' %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block css %}
+<style type="text/css">
+.register_page{
+
+{#    background-color: #0EA347;#}
+    height: auto;
+    width: 1200px;
+    overflow: auto;
+    line-height: 30px;
+    font-size: 20px;
+}
+
+.reg_line label{
+    margin-right: 20px;
+    width: 50px;
+}
+.input_default{
+    margin: 0 0 0 8px;
+    text-transform: uppercase;
+    float: left;
+    border: none;
+    font-weight: 400;
+
+    background: #79aec8;
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.listr1{ float:right; width:750px; height:50px; overflow:hidden; font-size:14px; border-bottom: 1px solid #eee; float: left; }
+.joinus_listr1{ float:right; width:650px; height:auto; overflow:auto; font-size:14px; margin:20px 1%; }
+.listr1 span{ display:inherit;height:30px; line-height:30px; font-size:18px; margin-bottom:10px; overflow:hidden; }
+.listr1 span i{ float:right; padding-right:10px; font-style:normal; font-size:14px;}
+.listr1 span a{ color: #6e6e6e;}
+.listr1 p{ line-height:30px;}
+
+.Pages1{ overflow:hidden;  width:100%; text-align:center;  margin:0 auto; padding-top:50px; padding-bottom:30px; padding-left: 5px}
+.Pages1 a{display:inline-block;width:65px;background:#ffffff;height:48px; vertical-align:middle; line-height:48px; font-size:14px; border:1px solid #e5e5e5; margin-left:-1px; float:left;text-decoration:none; color:#333; outline:none;}
+.Pages1 a:hover{ background:#0FA74E; color:#FFF;background-repeat:no-repeat; }
+.Pages1 span{display:inline-block;min-width:45px; padding:0 10px;background:#ffffff;height:48px; vertical-align:middle; line-height:48px; font-size:14px; border:1px solid #e5e5e5; margin-left:-1px;float:left;}
+.Pages1 span.current{ background:#0FA74E; color:#FFF; _padding:0px 30px;}
+.clearfix { display: inline-table; } /* Hides from IE-mac */
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+.line_del{
+    padding-left: 10px;
+}
+{#.listr1 a{#}
+{#    color: #008834;#}
+{#}#}
+.listr1 a:hover{
+    color: #5b80b2;
+}
+</style>
+{% endblock %}
+{% block body %}
+    <div class="sub_cont">
+      <div class="sub_cont01">
+    <div><img src="/static/images/sub01.png" width="1100" height="6" alt="line" /></div>
+    <div class="sub_cont02">
+      <div class="sub_cont03">
+        <div class="sider">
+{#          <div class="sider01">注册信息</div>#}
+{#            <div class="sider02">#}
+{#              <ul>#}
+{#                <li><a href="" class="sider02_on">集团简介</a></li>#}
+{#                <li><a href="">荣誉资质</a></li>#}
+{#                <li><a href="">集团内刊</a></li>#}
+{#              </ul>#}
+{#            </div>#}
+{#        </div>#}
+                    <div class="sub_tit"><span>您的位置：</span><a href="index">首页</a>>{{ title }} </div>
+             <div class="register_page">
+                         {% for i in infos %}
+                             <div class="listr1">
+                                <span><i>{{ i.create_date }}<a class="line_del" href="/info/?act=del&uuid={{ i.uuid }}">删除</a></i><a href="/detail?uuid={{ i.uuid }}">{{ i.name }}-{{ i.sex }}-{{ i.age }}-{{ i.graduate_institutions }}-{{ i.education_background }}</a></span>
+                             </div>
+                         {% endfor %}
+{#                         分页   #}
+                         <div class="Pages1 clearfix">
+                                <a href="/info/?page=1">首页</a>
+                                {% if not infos.has_previous %}
+                                        <span disabled="true">上一页</span>
+                                {% else %}
+                                        <a href="?page={{ infos.previous_page_number }}" aria-label="Previous">上一页</a>
+                                {% endif %}
+                                <span>{{ count }} 条记录 {{ infos.number }}/{{ pages }} 页</span>
+                                {% if not infos.has_next %}
+                                    <span disabled="true">下一页</span>
+                                {% else %}
+                                    <a href="?page={{ infos.next_page_number  }}" aria-label="Previous">下一页</a>
+                                {% endif %}
+                                <a href="/info/?page={{ pages }}">末页</a>
+                         </div>
+             </div>
+
+        </div>
+       </div>
+
+
+
+
+
+             
+             
+
+
+
+             </div>
+        <div class="sub_right clearfix">
+
+            </div>
+
+
+{#              <div class="Pages clearfix">#}
+{#                 <span>46 条记录 1/6 页</span>  <a href="">下一页</a>#}
+{#                 <span class="current">1</span>#}
+{#                 <a href="">&nbsp;2&nbsp;</a>#}
+{#                 <a href="">&nbsp;3&nbsp;</a>#}
+{#                 <a href="">&nbsp;4&nbsp;</a>#}
+{#                 <a href="">&nbsp;5&nbsp;</a>#}
+{#                 <a href="">下5页</a>#}
+{#                 <a href="">末页</a>#}
+{#              </div>#}
+        </div>
+        <div><img src="/static/images/sub02.png" width="1100" height="6" alt="line"></div>
+       </div>
+     </div>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'basehtml.html' %}
+{% load static %}
+{% block css %}
+    <style type="text/css">
+        .content{
+            display: flex;
+            flex-direction: column;
+            padding: 2%;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .top-bar{
+            {#background-color: red;#}
+            {#height: 50px;#}
+            display: flex;
+            flex-direction: row;
+            justify-content: start;
+            align-items: center;
+            padding: 1%;
+            {#border-bottom: 1px solid #b2b2b2;#}
+            background: url({% static 'images/sub06.png'%}) repeat-x left bottom;
+        }
+    .top-content{
+        margin-left: 10%;
+    }
+    .top-nav-text{
+        font-size: 14px;
+    }
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="top-bar">
+        <div class="top-content">
+            <span style="color:#0D9E3F;font-size: 16px;">
+                您的位置：
+            </span>
+            <span class="top-nav-text">
+                <a href="/index/">首页</a> > 荣誉证书
+            </span>
+
+        </div>
+
+    </div>
+    <div class="content">
+
+
+            <img src="{% static '' %}{{ pic }}" alt="图片放大" width="50%" height="80%"/>
+
+
+
+    </div>
+{% endblock %}
+

@@ -1,0 +1,53 @@
+﻿{% extends 'basehtml.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="sub_cont">
+      <div class="sub_cont01">
+    <div><img src="/static/images/sub01.png" width="1100" height="6" alt="line" /></div>
+    <div class="sub_cont02">
+      <div class="sub_cont03">
+        <div class="sider">
+          <div class="sider01">加入我们</div>
+            <div class="sider02">
+              <ul>
+                <li><a href="" class="sider02_on">集团简介</a></li>
+                <li><a href="">荣誉资质</a></li>
+                <li><a href="">集团内刊</a></li>
+              </ul>
+            </div>
+        </div>
+        <div class="sub_right clearfix">
+            <div class="sub_tit"><span>您的位置：</span><a href="index">首页</a>>加入我们 </div>
+{#            <div class="list">#}
+{#             <div class="listpic"><img src="images/c1.jpg" width="139" height="107" /></div>#}
+             <div class="joinus_listr">
+{#              <span><i>2015-9-17</i><a href="">问题，这需要物业服务企业签订</a></span>#}
+
+                  {% for i in lines %}
+                      <p>{{ i }}</p>
+                  {% endfor %}
+                 <h3><a href="regist" style="color: red; font-size: 20px">网上注册信息链接</a></h3>
+             </div>
+            </div>
+
+
+{#              <div class="Pages clearfix">#}
+{#                 <span>46 条记录 1/6 页</span>  <a href="">下一页</a>#}
+{#                 <span class="current">1</span>#}
+{#                 <a href="">&nbsp;2&nbsp;</a>#}
+{#                 <a href="">&nbsp;3&nbsp;</a>#}
+{#                 <a href="">&nbsp;4&nbsp;</a>#}
+{#                 <a href="">&nbsp;5&nbsp;</a>#}
+{#                 <a href="">下5页</a>#}
+{#                 <a href="">末页</a>#}
+{#              </div>#}
+        </div>
+        <div><img src="/static/images/sub02.png" width="1100" height="6" alt="line"></div>
+       </div>
+     </div>
+    </div>
+  </div>
+
+{% endblock %}
+
