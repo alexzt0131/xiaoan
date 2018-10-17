@@ -13,7 +13,7 @@ $(function () {
 
     $("#addNews").click(
         function () {
-            window.location.href='/admins/news/add';
+            window.location.href='/admins/news/addUI';
         }
     );
 });

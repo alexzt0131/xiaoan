@@ -190,12 +190,98 @@ def news(request):
     return render(request, 'admins/news.html', ret)
 
 #添加news页面
+@csrf_exempt
 def addNews(request):
-
+    print('in addnews')
     ret = {
     }
+    print(request.method)
+
+    # 接受来自页面的POST请求
+    # if requestMethod == "POST":
+    #     print(requestMethod)
+
 
     return render(request, 'admins/news/add.html', ret)
+
+
+#新闻的方法集
+def newsMethods(request):
+
+    users = User.objects.all()
+    try:
+        user = users[0]
+    except Exception as e:
+        print(e)
+
+    print('in newsMethods')
+    method = request.GET.get('m', None)
+    requestMethod = request.method
+    # if requestMethod == "POST":
+    #添加新闻
+    if method == 'add':
+        try:
+            title = str(request.POST.get("title", None))
+            content = str(request.POST.get("content", None))
+
+            #判断参数是否为空
+
+            New.objects.create(
+                title=title,
+                content=content,
+                user=user
+            ).save()
+            return HttpResponseRedirect("/admins/news/")
+        except Exception as e:
+            print(e)
+            #需要一个错误页面
+    # elif requestMethod == "GET":
+    #删除方法
+    if method == "del":
+        #获得参数
+        newsUuid = request.GET.get('id')
+        #删除新闻的方法,以后提取为函数
+        delNews = New.objects.get(uuid=newsUuid)
+        #将外键清空
+        delNews.user = None
+        delNews.delete()
+        return HttpResponseRedirect("/admins/news/")
+    #修改新闻的UI
+    elif method == 'modifyUI':
+        #获得参数
+        newsUuid = request.GET.get('id')
+        # #删除新闻的方法,以后提取为函数
+        modifyNews = New.objects.get(uuid=newsUuid)
+        ret = {
+            'modifyNews': modifyNews,
+        }
+        return render(request, 'admins/news/modify.html', ret)
+    #修改新闻的方法
+    elif method == 'modify':
+        print('in news modify')
+        title = str(request.POST.get("title", None))
+        content = str(request.POST.get("content", None))
+        # print(title, content)
+        newsUuid = request.GET.get('id')
+        news = New.objects.get(uuid=newsUuid)
+        news.title = title
+        news.content = content
+        news.save()
+        return HttpResponseRedirect("/admins/news/")
+    #查找新闻的方法
+    elif method == 'search':
+        print('in news search')
+        searchName = request.POST.get('searchName')
+        news = New.objects.filter(title__contains=searchName)
+        ret = {
+            'news': news,
+        }
+        return render(request, 'admins/news.html', ret)
+
+
+    return HttpResponse("ok newsMethods")
+
+
 
 #test页面
 def testpage(request, a1, a2):
@@ -204,12 +290,12 @@ def testpage(request, a1, a2):
     print(a1, a2)
     return render(request, 'admins/test.html', ret)
 
-#test页面
-def testpage1(request, module, method):
-    print("in testpage111111!")
-    print(module, method)
-    ret = {}
-    return HttpResponse("ok")
+# #test页面
+# def testpage1(request, module, method):
+#     print("in testpage111111!")
+#     print(module, method)
+#     ret = {}
+#     return HttpResponse("ok")
 
 #test页面
 def adminsModulesDispathcer(request, module=None, method=None):
@@ -219,8 +305,9 @@ def adminsModulesDispathcer(request, module=None, method=None):
 
 
     if module == "news":
-        if method == "add":
+        if method == "addUI":
             return render(request, "admins/news/add.html", ret)
+
 
 
     return HttpResponse("ok")

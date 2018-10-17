@@ -2,18 +2,18 @@
 
 {% block main %}
     <div class="icontainer">
-        <form action="/admins/newsMethods?m=add" method="post">
+        <form action="/admins/newsMethods?m=modify&id={{ modifyNews.uuid }}" method="post">
             {% csrf_token %}
             <table class="news-add-table" border="0" cellpadding="5" cellspacing="0">
                 <tr>
                     <td>新闻标题:</td>
-                    <td><input required name="title" type="text" style="width: 800px;"></td>
+                    <td><input required value="{{ modifyNews.title }}" name="title" type="text" style="width: 800px;"></td>
                 </tr>
 
                 <tr>
                     <td>新闻内容:</td>
                     <td>
-                        <textarea required name="content" style="width: 800px;height:200px;overflow:scroll;resize:none;"></textarea>
+                        <textarea required name="content" style="width: 800px;height:200px;overflow:scroll;resize:none;">{{ modifyNews.content }}</textarea>
                     </td>
                 </tr>
                 <tr>

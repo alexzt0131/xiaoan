@@ -1,9 +1,24 @@
 @charset "utf-8";
-.container {
+.icontainer {
     margin: 2%;
+    position: fixed;
+    width: 80%;
+    /*width: 660px;*/
+    /*border: 1px solid red;*/
 }
 
 table {
     margin: 5px 0 5px 0;
     text-align: center;
+
 }
+.itable td{
+    width: 100px;
+    background-color: red;
+}
+
+
+.news-add-tools-row td{
+    background-color: #f6f6f6;
+}
+

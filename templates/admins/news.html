@@ -15,33 +15,41 @@
 {% endblock %}
 
 {% block main %}
-    <div class="container">
+    <div class="icontainer">
 
 
         <FORM id="customerForm" name="customerForm"
-              action="${pageContext.request.contextPath }/linkmanServlet?method=list"
+              action="/admins/newsMethods?m=search"
               method=post>
-        {% csrf_token %}
+            {% csrf_token %}
 
             <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
                 <TBODY>
                 <TR>
 
-                    <TABLE borderColor=#cccccc cellSpacing=0 cellPadding=0
+                    <TABLE cellSpacing=0 cellPadding=0
                            width="100%" align=center border=0>
                         <TBODY>
                         <TR>
-                            <TD height=25>
+                            <TD height=25 style="background-color: #f6f6f6">
+
+
                                 <TABLE cellSpacing=0 cellPadding=2 border=0>
                                     <TBODY>
-                                    <TR>
+                                    <TR class="news-add-tools-row">
                                         <TD>联系人名称：</TD>
-                                        <TD><INPUT class=textbox id=sChannel2
-                                                   style="WIDTH: 80px" maxLength=50 name="lkmName"></TD>
+                                        <TD>
+                                            <INPUT class=textbox id=sChannel2
+                                                   style="WIDTH: 80px" maxLength=50
+                                                   name="searchName"></TD>
 
-                                        <TD><INPUT class="button" id="sButton2" type="submit"
+                                        <TD>
+                                            <INPUT class="button" id="sButton2"
+                                                   type="submit"
                                                    value=" 筛选 " name=sButton2></TD>
-                                        <TD><INPUT class="button" id="addNews" type="button"
+                                        <TD>
+                                            <INPUT class="button" id="addNews"
+                                                   type="button"
                                                    value=" 添加新闻 " name=sButton2></TD>
                                     </TR>
                                     </TBODY>
@@ -70,9 +78,9 @@
                                             <TD>{{ n.create_date }}</TD>
                                             <TD>{{ n.title }}</TD>
                                             <TD>
-                                                <a href="#">修改</a>
+                                                <a href="/admins/newsMethods?m=modifyUI&id={{ n.uuid }}">修改</a>
                                                 &nbsp;&nbsp;
-                                                <a href="#">删除</a>
+                                                <a href="/admins/newsMethods?m=del&id={{ n.uuid }}">删除</a>
                                             </TD>
                                         </TR>
                                     {% endfor %}

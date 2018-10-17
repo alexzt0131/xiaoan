@@ -35,15 +35,31 @@ function navList(id) {
     });
 }
 
-/****表格隔行高亮显示*****/
-window.onload=function(){
-	oTable=document.getElementById("tab");//找表格
-	aTr=document.getElementsByTagName("tr");//找所有的行
-	for(i=0;i<aTr.length;i++){
+// /****表格隔行高亮显示*****/
+// window.onload=function(){
+// 	oTable=document.getElementById("tab");//找表格
+// 	// aTr=document.getElementsByTagName("tr");//找所有的行
+//     aTr = $("tr");//找所有的行
+// 	for(i=0;i<aTr.length;i++){
+// 		if(i%2==0){
+// 			// aTr[i].style.background="#fff";
+// 			aTr[i].style.background="#fff";
+// 		}else{
+// 			aTr[i].style.background="#ccc";
+// 		};
+// 	};
+// };
+function changeRowColor(tableID){
+    // var aTr = tableID.getElementsByTagName("tr");//找所有的行
+    // $("#tableID").getElementsByTagName("tr");
+    // var aTr = $("tr");//找所有的行
+    var aTr = $("#tableID").getElementsByTagName("tr");
+    for(i=0;i<aTr.length;i++){
 		if(i%2==0){
-			aTr[i].style.background="#fff";	
+			// aTr[i].style.background="#fff";
+			aTr[i].style.background="#fff";
 		}else{
-			aTr[i].style.background="#ccc";	
+			aTr[i].style.background="#ccc";
 		};
 	};
-};
+}
