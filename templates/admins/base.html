@@ -6,6 +6,7 @@
     <title>消安模板管理系统</title>
     {#备用，都该好后直接使用#}
     <link type="text/css" rel=stylesheet href="{% static 'admins/css/style.css' %}">
+    <link type="text/css" rel=stylesheet href="{% static 'admins/css/icss.css' %}">
     {% block css %}
     {% endblock %}
     <script type="text/javascript" src="{% static 'admins/js/jquery-1.8.3.min.js' %}"></script>
@@ -43,7 +44,7 @@
 <body>
 <div class="top"></div>
 <div id="header">
-    <div class="logo">{% block company %}{% endblock %}后台管理系统</div>
+    <div class="logo">消安后台管理系统</div>
     <div class="navigation">
         <ul>
             <li>欢迎您！</li>

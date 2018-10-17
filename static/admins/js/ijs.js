@@ -10,6 +10,12 @@ $(function () {
             mainSection.load('news.html');
         }
     );
+
+    $("#addNews").click(
+        function () {
+            window.location.href='/admins/news/add';
+        }
+    );
 });
 // function newsUI () {
 //     var mainSection = $("#main");

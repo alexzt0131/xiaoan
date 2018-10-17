@@ -1,0 +1,9 @@
+@charset "utf-8";
+.container {
+    margin: 2%;
+}
+
+table {
+    margin: 5px 0 5px 0;
+    text-align: center;
+}
