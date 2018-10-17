@@ -174,7 +174,11 @@ def admins(request):
     return render(request, 'admins/index.html', ret)
 
 
+
+
+
 #news页面
+@csrf_exempt
 def news(request):
 
     #获得所有新闻返回到页面
@@ -185,13 +189,41 @@ def news(request):
 
     return render(request, 'admins/news.html', ret)
 
+#添加news页面
+def addNews(request):
+
+    ret = {
+    }
+
+    return render(request, 'admins/news/add.html', ret)
+
 #test页面
-def testpage(request):
-
+def testpage(request, a1, a2):
+    print("in testpage!")
     ret = {}
-
+    print(a1, a2)
     return render(request, 'admins/test.html', ret)
 
+#test页面
+def testpage1(request, module, method):
+    print("in testpage111111!")
+    print(module, method)
+    ret = {}
+    return HttpResponse("ok")
+
+#test页面
+def adminsModulesDispathcer(request, module=None, method=None):
+    print("in adminsModulesDispathcer!")
+    print(module, method)
+    ret = {}
+
+
+    if module == "news":
+        if method == "add":
+            return render(request, "admins/news/add.html", ret)
+
+
+    return HttpResponse("ok")
 
 
 @csrf_exempt
