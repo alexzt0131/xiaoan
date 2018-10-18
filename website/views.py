@@ -13,7 +13,7 @@ from django import forms
 from tjbaoan import settings
 from tjbaoan.settings import CONTACT_TEL, COMPANY_NAME, ABOUT_US, STATIC_FOR_VIEW
 from tools.itools import itools
-from website.models import Info, User, New
+from website.models import Info, User, New, Photo
 
 
 class LogForm(forms.Form):
@@ -180,7 +180,7 @@ def admins(request):
 #news页面
 @csrf_exempt
 def news(request):
-
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!需要做分页
     #获得所有新闻返回到页面
     news = New.objects.all().order_by('-create_date')
     ret = {
@@ -188,6 +188,57 @@ def news(request):
     }
 
     return render(request, 'admins/news.html', ret)
+
+
+#将静态文件夹中的图片同步到数据库中的方法，只在初始化使用
+def synStaticDircaseDemoPic2DB():
+    '''
+    将静态文件夹中的图片同步到数据库中的方法，只在初始化使用
+    '''
+    filePaths = []
+    # rootdir = STATIC_FOR_VIEW + '/images/xuanchuan/'  # 指明被遍历的文件夹
+    caseShowPicsDir = STATIC_FOR_VIEW + '/images/caseshow/'  # 指明被遍历的文件夹
+    # rootdir = STATIC_ROOT + '/images/xuanchuan/'  # 指明被遍历的文件夹
+    # print(rootdir)
+    # print(os.path.exists(rootdir))
+    # file_names = itools.retrive(rootdir=rootdir)['files']
+    caseShowPics = itools.retrive(rootdir=caseShowPicsDir)['files']
+    print(caseShowPics)
+    #遍历所有案例展示的图片地址存入到集合中
+    for filename in caseShowPics:
+        filePaths.append(caseShowPicsDir + filename)
+
+    for i in filePaths:
+        # print(i)
+
+        photo = Photo()
+        photo.file_path = i
+        photo.file_name = i.split('/')[-1]
+        photo.save()
+
+#案例展示页面
+@csrf_exempt
+def caseDemo(request):
+
+
+    '''
+    初始化的时候需要调用synStaticDircaseDemoPic2DB（）
+    :param request:
+    :return:
+    '''
+
+    #获得所有展示照片返回到页面
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!需要做分页
+    demoPics = []
+    photoObjs = Photo.objects.all().order_by('-upload_date')
+    for photoObj in photoObjs:
+        demoPics.append(photoObj.file_name)
+
+    ret = {
+        'demoPics': demoPics,
+    }
+
+    return render(request, 'admins/caseDemo/index.html', ret)
 
 #添加news页面
 @csrf_exempt
@@ -266,12 +317,15 @@ def newsMethods(request):
         news = New.objects.get(uuid=newsUuid)
         news.title = title
         news.content = content
+        news.create_date = itools.getCurrentDateTime()
         news.save()
         return HttpResponseRedirect("/admins/news/")
     #查找新闻的方法
     elif method == 'search':
         print('in news search')
         searchName = request.POST.get('searchName')
+        if not searchName:
+            return HttpResponseRedirect('/admins/news/')
         news = New.objects.filter(title__contains=searchName)
         ret = {
             'news': news,

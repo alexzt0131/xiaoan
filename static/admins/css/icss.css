@@ -22,3 +22,25 @@ table {
     background-color: #f6f6f6;
 }
 
+.pics-frame{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.pics-frame div{
+    margin: 5px;
+}
+.pic-wraper{
+    display: flex;
+    flex-direction: column;
+    /*flex-wrap: wrap;*/
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.options a{
+
+    margin-right: 10px;
+}

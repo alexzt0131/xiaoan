@@ -1,3 +1,4 @@
+import datetime
 import os
 
 from django.shortcuts import render
@@ -29,3 +30,6 @@ class itools():
         #         # full_path = os.path.join(parent, filename)# 输出文件路径信息
 
         return ret
+
+    def getCurrentDateTime(self=None):
+        return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')

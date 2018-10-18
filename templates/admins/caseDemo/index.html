@@ -1,0 +1,31 @@
+{% extends "admins/base.html" %}
+{% load static %}
+{% block module %}
+    内容管理
+{% endblock %}
+{% block method %}
+    案例展示
+{% endblock %}
+
+{% block main %}
+
+    {#    <div class="icontainer">#}
+    <div class="pics-frame">
+        {% for i in demoPics %}
+            <div class="pic-wraper">
+                <div>
+                    <img src="{% static 'images/caseshow/' %}{{ i }}" width="180" height="150"/>
+                </div>
+                <div class="options">
+{#                    需要一个判断来取消置顶#}
+                    <a href="#">模块置顶</a>
+                    <a href="#">删除</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    {#    </div>#}
+
+{% endblock %}

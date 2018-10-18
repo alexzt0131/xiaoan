@@ -9,12 +9,35 @@ class User(AbstractUser):     #继承AbstractUser
     desc = models.TextField()
     uuid = models.UUIDField(default=uuid.uuid4, null=False, verbose_name='uuid')
 
+
+class Photo(models.Model):
+    uuid = models.UUIDField(default=uuid.uuid4, null=False, verbose_name='uuid')
+    file_path = models.CharField(max_length=150, default='', verbose_name='文件保存路径')
+    file_name = models.CharField(max_length=150, default='', verbose_name='文件名')
+    is_top = models.BooleanField(default=False, verbose_name="是否置顶")
+    is_del = models.BooleanField(default=False, verbose_name="是否已删除(文件并未删除只是做标记)")
+    upload_date = models.CharField(max_length=40, default=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), verbose_name='创建时间')
+    upload_user = models.ForeignKey(User, null=True)
+
+    def __str__(self):
+        return '{}-{}-{}'.format(self.upload_user, self.upload_date, self.file_name)
+
+
 class New(models.Model):
     title = models.CharField(max_length=150, default='', verbose_name='主题')
     content = models.TextField(max_length=1400, null=True, blank=True, verbose_name='内容')
     uuid = models.UUIDField(default=uuid.uuid4, null=False, verbose_name='uuid')
     create_date = models.CharField(max_length=40, default=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), verbose_name='创建时间')
+    # modify_date = models.CharField(max_length=40, null=True, verbose_name='修改时间')
     user = models.ForeignKey(User, null=True)
+    # modify_ser = models.ForeignKey(User, null=True)
+    # status = models.CharField(max_length=10, default='1', verbose_name='状态')
+    # '''
+    #     状态级别:
+    #     0.不可用（删除状态）。
+    #     1.可用（正常被添加状态）
+    #     2.修改（被修改状态）
+    # '''
 
     def __str__(self):
         return '{}-{}-{}'.format(self.create_date, self.user, self.title, )

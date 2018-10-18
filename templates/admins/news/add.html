@@ -1,5 +1,13 @@
 {% extends "admins/index.html" %}
 
+{% block module %}
+    内容管理
+{% endblock %}
+
+{% block method %}
+    添加新闻
+{% endblock %}
+
 {% block main %}
     <div class="icontainer">
         <form action="/admins/newsMethods?m=add" method="post">

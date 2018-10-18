@@ -14,6 +14,14 @@
     </style>
 {% endblock %}
 
+{% block module %}
+    内容管理
+{% endblock %}
+
+{% block method %}
+    新闻中心
+{% endblock %}
+
 {% block main %}
     <div class="icontainer">
 
@@ -60,14 +68,14 @@
                         <TR>
                             <TD>
                                 <TABLE id=grid
-                                       style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 100%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc"
+                                       style="BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: normal; BORDER-LEFT-WIDTH: 0px; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #cccccc; WIDTH: 90%; BORDER-TOP-COLOR: #cccccc; FONT-STYLE: normal; BACKGROUND-COLOR: #cccccc; BORDER-RIGHT-WIDTH: 0px; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #cccccc"
                                        cellSpacing=1 cellPadding=2 rules=all border=0>
                                     <TBODY>
                                     <TR
                                             style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none">
                                         <TD style="width: 10%">创建用户</TD>
-                                        <TD style="width: 20%">创建时间</TD>
-                                        <TD style="width: 50%">标题</TD>
+                                        <TD style="width: 20%">最后修改时间</TD>
+                                        <TD style="width: 30%">标题</TD>
                                         <TD style="width: 20%">操作</TD>
                                     </TR>
 
@@ -78,9 +86,10 @@
                                             <TD>{{ n.create_date }}</TD>
                                             <TD>{{ n.title }}</TD>
                                             <TD>
+
                                                 <a href="/admins/newsMethods?m=modifyUI&id={{ n.uuid }}">修改</a>
-                                                &nbsp;&nbsp;
-                                                <a href="/admins/newsMethods?m=del&id={{ n.uuid }}">删除</a>
+{#                                                <a href="/admins/newsMethods?m=del&id={{ n.uuid }}">删除</a>#}
+                                                <a href="#" onclick="checkDel('{{ n.uuid }}');">删除</a>
                                             </TD>
                                         </TR>
                                     {% endfor %}

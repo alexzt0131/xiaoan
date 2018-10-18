@@ -64,7 +64,7 @@
                     <a href='#'>集团业务</a>
 {#                    <a href='#' id="admins-news">新闻中心</a>#}
                     <a href='/admins/news/'>新闻中心</a>
-                    <a href='#'>案例展示</a>
+                    <a href='/admins/caseDemo/'>案例展示</a>
                 </div>
             </li>
 
@@ -75,9 +75,9 @@
             <ul>
                 <li><img src="{% static 'admins/images/home.png' %}"></li>
                 <li style="margin-left:25px;">您当前的位置：</li>
-                <li><a href="#">系统公告</a></li>
+                <li><a href="#">{% block module %}{% endblock %}</a></li>
                 <li>></li>
-                <li><a href="#">最新公告</a></li>
+                <li><a href="#">{% block method %}{% endblock %}</a></li>
             </ul>
         </div>
         <div class="main" id="main">

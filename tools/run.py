@@ -1,43 +1,39 @@
 import os, django
 import re
 
+from tools.itools import itools
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tjbaoan.settings")# project_name 项目名称
 django.setup()
 
 from django.contrib.auth.hashers import make_password
 
-from website.models import User
+from website.models import User, Photo
 from tjbaoan.settings import BASE_DIR, STATIC_FOR_VIEW
 
 if __name__ == '__main__':
 
+    def synStaticDircaseDemoPic2DB():
+        filePaths = []
+        # rootdir = STATIC_FOR_VIEW + '/images/xuanchuan/'  # 指明被遍历的文件夹
+        caseShowPicsDir = STATIC_FOR_VIEW + '/images/caseshow/'  # 指明被遍历的文件夹
+        # rootdir = STATIC_ROOT + '/images/xuanchuan/'  # 指明被遍历的文件夹
+        # print(rootdir)
+        # print(os.path.exists(rootdir))
+        # file_names = itools.retrive(rootdir=rootdir)['files']
+        caseShowPics = itools.retrive(rootdir=caseShowPicsDir)['files']
+        print(caseShowPics)
+        #遍历所有案例展示的图片地址存入到集合中
+        for filename in caseShowPics:
+            filePaths.append(caseShowPicsDir + filename)
 
-    path = STATIC_FOR_VIEW + '/docs/zhaopin.txt'
+        for i in filePaths:
+            # print(i)
 
-    with open(path, 'r+') as f:
-        lines = f.readlines()
-        pattern = r"^\\t$"
-        for line in lines:
-            a = re.compile(pattern=pattern)
-            print(a.sub('&nbsp;', line))
+            photo = Photo()
+            photo.file_path = i
+            photo.file_name = i.split('/')[-1]
+            photo.save()
 
-        print(lines)
-
-
-
+    synStaticDircaseDemoPic2DB()
     pass
-
-    # with open(STATICFILES_DIRS[0] + '/docs/zhaopin.txt') as f:
-    #     lines = f.readlines()
-    #
-    #
-    # for i in lines:
-    #     print(i)
-    # rootdir = STATICFILES_DIRS[0] + '/images/xuanchuan/'  # 指明被遍历的文件夹
-    # print(rootdir)
-    #
-    # print(os.path.exists(rootdir))
-    # file_names = []
-    # file_names = itools.retrive(rootdir=rootdir)['files']
-    #
-    # print(file_names)
