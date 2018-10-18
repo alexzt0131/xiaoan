@@ -1,13 +1,18 @@
+import json
 import os
 
+import time
 from django.contrib.auth import login, logout
 from django.contrib.auth.hashers import make_password
+from django.core.files import File
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage, InvalidPage
+
 from django.forms import ModelForm, Textarea, TextInput
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-
+from django.http import JsonResponse
 # Create your views here.
+from django.template.backends import django
 from django.views.decorators.csrf import csrf_exempt
 from django import forms
 from tjbaoan import settings
@@ -256,6 +261,38 @@ def addNews(request):
     return render(request, 'admins/news/add.html', ret)
 
 
+#上传文件的方法
+@csrf_exempt
+def upload(request):
+    rmethod = request.method
+    module = request.GET.get('module')
+    print(module)
+    if rmethod == "POST":
+        print('in upload')
+        #新闻模块的图片上传
+        if module == "news":
+            #接收来自页面POST上传的文件存入指定文件夹（需提取函数）
+            uploadFile = request.FILES.get('uploadInput')
+            # print(type(uploadFile))
+            filename = str(int(time.time())) + uploadFile._name
+            path = STATIC_FOR_VIEW + '/images/{}/{}'.format('news', filename)
+            # print(path)
+            # print(filename)
+            with open(path, 'wb', buffering=0) as f:
+                f.write(uploadFile.file.getvalue())
+            #写入数据库（文件地址）
+            Photo(
+                file_path=path,
+                file_name=filename,
+                upload_user=None
+            ).save()
+
+        ret = {"status": "ok1", 'filename': filename}
+        retJson = json.dumps(ret)
+        print(retJson)
+        return HttpResponse(retJson)
+
+
 #新闻的方法集
 def newsMethods(request):
 
@@ -309,7 +346,16 @@ def newsMethods(request):
         return render(request, 'admins/news/modify.html', ret)
     #修改新闻的方法
     elif method == 'modify':
+
         print('in news modify')
+
+        filename = request.POST.get('hidFilename')
+        print(filename)
+        pObj = Photo.objects.get(file_name=filename)
+        print(pObj)
+
+
+
         title = str(request.POST.get("title", None))
         content = str(request.POST.get("content", None))
         # print(title, content)
@@ -318,6 +364,7 @@ def newsMethods(request):
         news.title = title
         news.content = content
         news.create_date = itools.getCurrentDateTime()
+        news.news_photo = pObj
         news.save()
         return HttpResponseRedirect("/admins/news/")
     #查找新闻的方法

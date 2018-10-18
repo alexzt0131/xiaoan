@@ -28,6 +28,7 @@ class New(models.Model):
     content = models.TextField(max_length=1400, null=True, blank=True, verbose_name='内容')
     uuid = models.UUIDField(default=uuid.uuid4, null=False, verbose_name='uuid')
     create_date = models.CharField(max_length=40, default=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), verbose_name='创建时间')
+    news_photo = models.ForeignKey(Photo, null=True)
     # modify_date = models.CharField(max_length=40, null=True, verbose_name='修改时间')
     user = models.ForeignKey(User, null=True)
     # modify_ser = models.ForeignKey(User, null=True)

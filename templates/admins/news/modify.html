@@ -1,19 +1,39 @@
 {% extends "admins/index.html" %}
-
+{% load static %}
 {% block main %}
     <div class="icontainer">
-        <form action="/admins/newsMethods?m=modify&id={{ modifyNews.uuid }}" method="post">
+        <form id="newsform" action="/admins/newsMethods?m=modify&id={{ modifyNews.uuid }}" method="post"
+              enctype="multipart/form-data">
             {% csrf_token %}
             <table class="news-add-table" border="0" cellpadding="5" cellspacing="0">
                 <tr>
                     <td>新闻标题:</td>
-                    <td><input required value="{{ modifyNews.title }}" name="title" type="text" style="width: 800px;"></td>
+                    <td><input required value="{{ modifyNews.title }}" name="title" type="text" style="width: 800px;">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>新闻图片：</td>
+                    <td style="text-align: left">
+                        <img id="newsPhoto" name="newsPhoto" src="{% static 'images/news/' %}news1.jpg" width="300" height="300"/>
+
+                    </td>
+                </tr>
+                <tr style="text-align: left">
+                    <td>图片操作</td>
+                    <td>
+                        <input id="uploadInput" name="uploadInput" type="file" value="上传图片">
+                        <input type="button" value="选择已上传图片">
+                        <input type="hidden" id="hidFilename" name="hidFilename">
+                    </td>
+
                 </tr>
 
                 <tr>
                     <td>新闻内容:</td>
                     <td>
-                        <textarea required name="content" style="width: 800px;height:200px;overflow:scroll;resize:none;">{{ modifyNews.content }}</textarea>
+                        <textarea required name="content"
+                                  style="width: 800px;height:200px;overflow:scroll;resize:none;">{{ modifyNews.content }}</textarea>
                     </td>
                 </tr>
                 <tr>
