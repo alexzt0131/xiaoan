@@ -272,7 +272,6 @@ def synStaticDircaseDemoPic2DB():
 
 
 # 案例展示页面
-@check_login
 @csrf_exempt
 def acaseDemo(request):
     '''

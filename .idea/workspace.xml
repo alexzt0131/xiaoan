@@ -2,56 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eecfee69-c638-4606-bf28-38560891b705" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/10.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/11.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/12.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/13.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/14.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/15.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/16.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/17.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/3.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/4.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/5.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/6.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/7.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/8.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/9.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/内务1.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/内务2.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/训练.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/训练1.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/训练10.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/训练11.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/训练12.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/训练2.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/训练3.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/训练4.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/训练5.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/训练6.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/训练7.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/训练8.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/caseshow/训练9.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/admins/caseDemo/add.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/admins/login.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/admins/recycle/pic.html" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/static/admins/css/icss.css" afterPath="$PROJECT_DIR$/static/admins/css/icss.css" />
-      <change beforePath="$PROJECT_DIR$/static/admins/js/ijs.js" afterPath="$PROJECT_DIR$/static/admins/js/ijs.js" />
-      <change beforePath="$PROJECT_DIR$/static/images/caseshow/20180412194121.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/static/images/caseshow/20180412194412.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/static/images/news/1539934069yxjg.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/static/ver.txt" afterPath="$PROJECT_DIR$/static/ver.txt" />
-      <change beforePath="$PROJECT_DIR$/templates/admins/base.html" afterPath="$PROJECT_DIR$/templates/admins/base.html" />
-      <change beforePath="$PROJECT_DIR$/templates/admins/caseDemo/index.html" afterPath="$PROJECT_DIR$/templates/admins/caseDemo/index.html" />
-      <change beforePath="$PROJECT_DIR$/templates/admins/index.html" afterPath="$PROJECT_DIR$/templates/admins/index.html" />
-      <change beforePath="$PROJECT_DIR$/templates/admins/news.html" afterPath="$PROJECT_DIR$/templates/admins/news.html" />
-      <change beforePath="$PROJECT_DIR$/templates/admins/news/add.html" afterPath="$PROJECT_DIR$/templates/admins/news/add.html" />
-      <change beforePath="$PROJECT_DIR$/templates/admins/news/modify.html" afterPath="$PROJECT_DIR$/templates/admins/news/modify.html" />
-      <change beforePath="$PROJECT_DIR$/templates/admins/test.html" afterPath="$PROJECT_DIR$/templates/admins/test.html" />
-      <change beforePath="$PROJECT_DIR$/templates/caseDemo/detail.html" afterPath="$PROJECT_DIR$/templates/caseDemo/detail.html" />
-      <change beforePath="$PROJECT_DIR$/tjbaoan/urls.py" afterPath="$PROJECT_DIR$/tjbaoan/urls.py" />
-      <change beforePath="$PROJECT_DIR$/website/models.py" afterPath="$PROJECT_DIR$/website/models.py" />
       <change beforePath="$PROJECT_DIR$/website/views.py" afterPath="$PROJECT_DIR$/website/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/website/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="171" column="16" lean-forward="true" selection-start-line="171" selection-start-column="16" selection-end-line="171" selection-end-column="16" />
+            <state relative-caret-position="174">
+              <caret line="275" column="13" lean-forward="false" selection-start-line="275" selection-start-column="4" selection-end-line="275" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -100,11 +50,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ver.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ver.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/ver.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="234">
               <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="uwsgi.ini" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/uwsgi.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -146,7 +106,7 @@
         <entry file="file://$PROJECT_DIR$/templates/admins/caseDemo/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+              <caret line="10" column="14" lean-forward="false" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -155,18 +115,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tjbaoan/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="35" column="28" lean-forward="false" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/admins/news/add.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+            <state relative-caret-position="146">
+              <caret line="23" column="42" lean-forward="false" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -255,9 +205,9 @@
         <option value="$PROJECT_DIR$/templates/admins/caseDemo/add.html" />
         <option value="$PROJECT_DIR$/templates/admins/base.html" />
         <option value="$PROJECT_DIR$/templates/admins/index.html" />
-        <option value="$PROJECT_DIR$/website/views.py" />
         <option value="$PROJECT_DIR$/templates/admins/caseDemo/index.html" />
         <option value="$PROJECT_DIR$/static/ver.txt" />
+        <option value="$PROJECT_DIR$/website/views.py" />
       </list>
     </option>
   </component>
@@ -299,86 +249,7 @@
             <path>
               <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
               <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="admins" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="admins" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-              <item name="news" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="admins" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="admins" type="462c0819:PsiDirectoryNode" />
-              <item name="caseDemo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="admins" type="462c0819:PsiDirectoryNode" />
-              <item name="news" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="admins" type="462c0819:PsiDirectoryNode" />
-              <item name="recycle" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="caseDemo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
-              <item name="tjbaoan" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
+              <item name="script" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -523,15 +394,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/local/lib/python3.5/dist-packages/django/forms/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="79" column="13" lean-forward="false" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/images/news/qr1539879562.php1539879562.png" />
     <entry file="file://$PROJECT_DIR$/tools/ttt.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -817,14 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tjbaoan/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="35" column="28" lean-forward="false" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admins/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -833,18 +687,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/admins/caseDemo/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="171" column="16" lean-forward="true" selection-start-line="171" selection-start-column="16" selection-end-line="171" selection-end-column="16" />
+        <state relative-caret-position="180">
+          <caret line="10" column="14" lean-forward="false" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admins/caseDemo/index.html">
+    <entry file="file://$PROJECT_DIR$/uwsgi.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -853,6 +707,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/uwsgi.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tjbaoan/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="23" column="42" lean-forward="false" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="275" column="13" lean-forward="false" selection-start-line="275" selection-start-column="4" selection-end-line="275" selection-end-column="13" />
           <folding />
         </state>
       </provider>
