@@ -15,11 +15,11 @@
 {% endblock %}
 
 {% block module %}
-    内容管理
+    新闻管理
 {% endblock %}
 
 {% block method %}
-    新闻中心
+    修改新闻
 {% endblock %}
 
 {% block main %}
@@ -84,7 +84,7 @@
                                         <TR style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
                                             <TD>{{ n.user }}</TD>
                                             <TD>{{ n.create_date }}</TD>
-                                            <TD>{{ n.title }}</TD>
+                                            <TD><a href="/admins/newsMethods?m=modifyUI&id={{ n.uuid }}">{{ n.title }}</a></TD>
                                             <TD>
 
                                                 <a href="/admins/newsMethods?m=modifyUI&id={{ n.uuid }}">修改</a>

@@ -1,0 +1,46 @@
+{% extends 'basehtml.html' %}
+{% load static %}
+{% block css %}
+    <style type="text/css">
+        .options span{
+            font-size: 14px;
+            color: #283238;
+        }
+    </style>
+{% endblock %}
+{% block title %}
+    演示图片
+{% endblock %}
+{% block body %}
+    <div class="top-bar">
+        <div class="top-content">
+            <span style="color:#0D9E3F;font-size: 16px;">
+                您的位置：
+            </span>
+            <span class="top-nav-text">
+                <a href="/index/">首页</a> > <a href="/caseDemo/">案例演示</a> > 演示图片
+            </span>
+
+        </div>
+
+    </div>
+    <div class="case-pics-container">
+
+
+        <div class="pics-frame">
+
+                <div class="pic-wraper">
+                    <div>
+                        <img src="{% static 'images/caseshow/' %}{{ pic.file_name }}" width="600px" height="500px"/>
+                    </div>
+{#                    <div class="options">#}
+{#                        <span>模块置顶</span>#}
+{#                    </div>#}
+                </div>
+{#            {% endfor %}#}
+        </div>
+
+
+    </div>
+{% endblock %}
+

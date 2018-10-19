@@ -1,11 +1,13 @@
 @charset "utf-8";
 .icontainer {
     margin: 2%;
-    position: fixed;
-    width: 80%;
+    position: relative;
+    width: 90%;
+    overflow: auto;
     /*width: 660px;*/
     /*border: 1px solid red;*/
 }
+
 
 table {
     margin: 5px 0 5px 0;
@@ -18,25 +20,32 @@ table {
 }
 
 
+
 .news-add-tools-row td{
     background-color: #f6f6f6;
 }
 
 .pics-frame{
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    justify-items: center;
     align-items: center;
 }
+
+
+
+
 .pics-frame div{
+    /*border: 1px solid green;*/
     margin: 5px;
 }
 .pic-wraper{
     display: flex;
     flex-direction: column;
     /*flex-wrap: wrap;*/
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -44,3 +53,14 @@ table {
 
     margin-right: 10px;
 }
+.case-pics-container{
+    display: flex;
+    border: 1px solid red;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+

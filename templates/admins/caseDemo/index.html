@@ -9,23 +9,26 @@
 
 {% block main %}
 
-    {#    <div class="icontainer">#}
-    <div class="pics-frame">
-        {% for i in demoPics %}
-            <div class="pic-wraper">
-                <div>
-                    <img src="{% static 'images/caseshow/' %}{{ i }}" width="180" height="150"/>
+    <div class="icontainer">
+        <div class="pics-frame">
+            {% for i in demoPics %}
+                <div class="pic-wraper" style="margin-left: 1.7em;">
+                    <div>
+                        <img src="{% static 'images/caseshow/' %}{{ i.file_name }}" width="180em;" height="150em"/>
+                    </div>
+                    <div class="options">
+                        {#                    需要一个判断来取消置顶#}
+                        {% if i.is_top == True %}
+                            <a href="/admins/caseDemo/?m=untop&id={{ i.uuid }}" style="color: red">取消置顶</a>
+                        {% else %}
+                            <a href="/admins/caseDemo/?m=setTop&id={{ i.uuid }}">模块置顶</a>
+                        {% endif %}
+                        <a href="#">删除</a>
+                    </div>
                 </div>
-                <div class="options">
-{#                    需要一个判断来取消置顶#}
-                    <a href="#">模块置顶</a>
-                    <a href="#">删除</a>
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
+
     </div>
-
-
-    {#    </div>#}
 
 {% endblock %}

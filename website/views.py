@@ -223,7 +223,7 @@ def synStaticDircaseDemoPic2DB():
 
 #案例展示页面
 @csrf_exempt
-def caseDemo(request):
+def acaseDemo(request):
 
 
     '''
@@ -231,6 +231,57 @@ def caseDemo(request):
     :param request:
     :return:
     '''
+    method = request.GET.get('m')
+    if method == 'setTop':
+        print('in caseDemo setTop')
+        picID = request.GET.get('id', None)
+        if picID:
+            pObj = Photo.objects.get(uuid=picID)
+            #设置图片置顶
+            pObj.is_top = True
+            # pObj.upload_date = itools.getCurrentDateTime()
+            pObj.save()
+            #返回到页面（最下面的方法访问index）
+            return HttpResponseRedirect('/admins/caseDemo/')
+    elif method == 'untop':
+        print('in caseDemo untop')
+        picID = request.GET.get('id', None)
+        if picID:
+            pObj = Photo.objects.get(uuid=picID)
+            # 设置图片置顶
+            pObj.is_top = False
+            # pObj.upload_date = itools.getCurrentDateTime()
+            pObj.save()
+            # 返回到页面（最下面的方法访问index）
+            return HttpResponseRedirect('/admins/caseDemo/')
+
+
+    #获得所有展示照片返回到页面
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!需要做分页
+    # demoPics = []
+    photoObjs = Photo.objects.all().order_by('-upload_date')
+    # for photoObj in photoObjs:
+    #     demoPics.append(photoObj.file_name)
+
+    ret = {
+        # 'demoPics': demoPics,
+        'demoPics': photoObjs,
+    }
+
+    return render(request, 'admins/caseDemo/index.html', ret)
+
+
+def caseDemo(request):
+
+
+    '''
+    展示案例演示图片的方法
+    初始化的时候需要调用synStaticDircaseDemoPic2DB（）
+    :param request:
+    :return:
+    '''
+
+
 
     #获得所有展示照片返回到页面
     #!!!!!!!!!!!!!!!!!!!!!!!!!!需要做分页
@@ -241,9 +292,14 @@ def caseDemo(request):
 
     ret = {
         'demoPics': demoPics,
+        'photoObjs': photoObjs,
     }
 
-    return render(request, 'admins/caseDemo/index.html', ret)
+    return render(request, 'caseDemo/index.html', ret)
+
+
+
+
 
 #添加news页面
 @csrf_exempt
@@ -581,10 +637,18 @@ def index(request):
     # print(rootdir)
     # print(os.path.exists(rootdir))
     file_names = itools.retrive(rootdir=rootdir)['files']
-    caseShowPics = itools.retrive(rootdir=caseShowPicsDir)['files']
+    # caseShowPics = itools.retrive(rootdir=caseShowPicsDir)['files']
+
+
+    #如果数据库中没有图片则同步所有caseshow图片到数据库
+    caseShowPics = Photo.objects.all().order_by('-upload_date')
+    if len(caseShowPics) < 1:
+        synStaticDircaseDemoPic2DB()
+        pass
+
 
     ret['file_names'] = file_names
-    ret['caseShowPics'] = caseShowPics
+    ret['caseShowPics'] = caseShowPics[:8]
     return render(request, 'index.html', ret)
 
 def join_us(request):

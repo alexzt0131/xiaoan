@@ -1,0 +1,62 @@
+{% extends 'basehtml.html' %}
+{% load static %}
+{% block css %}
+    <style type="text/css">
+        .options span{
+            font-size: 14px;
+            color: #283238;
+        }
+    </style>
+{% endblock %}
+{% block title %}
+    全部案例图片
+{% endblock %}
+{% block body %}
+    <div class="top-bar">
+        <div class="top-content">
+            <span style="color:#0D9E3F;font-size: 16px;">
+                您的位置：
+            </span>
+            <span class="top-nav-text">
+                <a href="/index/">首页</a> > 案例演示
+            </span>
+
+        </div>
+
+    </div>
+    <div class="case-pics-container">
+
+
+        <div class="pics-frame">
+{#            <div>asdf</div>#}
+{#            <div class="pic-wraper">#}
+{#                <div>#}
+{#                    <img src="{% static 'images/caseshow/20180412193839.jpg' %}" width="250" height="180"/>#}
+{#                </div>#}
+{#                <div>#}
+{#                    <img src="{% static 'images/caseshow/20180412193839.jpg' %}" width="250" height="180"/>#}
+{#                </div>#}
+{#            </div>#}
+            {##}
+            {% for i in photoObjs %}
+{#            {% for i in demoPics %}#}
+                <div class="pic-wraper">
+                    <div>
+                        <label>
+                            {#                      <img pid="{{ i.uuid }}" src="{% static 'images/caseshow/' %}{{ i }}" width="250" height="180"/>#}
+                            <a href="/caseDemo/?m=detail&id={{ i.uuid }}">
+                                <img src="{% static 'images/caseshow/' %}{{ i.file_name }}" width="250" height="180"/>
+                            </a>
+                        </label>
+                    </div>
+{#                    <div class="options">#}
+{#                        <span>{{ i.file_name }}</span>#}
+{#                    </div>#}
+                </div>
+            {% endfor %}
+        </div>
+
+
+    </div>
+{% endblock %}
+

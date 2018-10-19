@@ -42,7 +42,7 @@ body{font-family:Microsoft YaHei,Verdana,Arial,SimSun;color:#666;font-size:14px;
 .M9 span{background:url(../images/ioc.png) -72px -70px;}
 .M10 span{background:url(../images/ioc.png) -3px -105px;}
 /***右侧内容****/
-.m-right{margin-left:300px;height:100%;}
+.m-right{margin-left:300px;height:100%;overflow: auto;}
 .right-nav{height:50px;border-bottom:1px solid #d1d1d1;background:#f6f6f6;}
 .right-nav li{float:left;margin-left:5px;line-height:50px;color:#464646;font-size: 14px;}
 .right-nav li img{position:relative;top:17px;left:15px;}

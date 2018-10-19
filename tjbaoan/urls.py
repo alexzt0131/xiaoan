@@ -21,7 +21,8 @@ from website import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^admins/$', views.admins),
-    url(r'^admins/caseDemo/', views.caseDemo),
+    url(r'^admins/caseDemo/', views.acaseDemo),
+    url(r'^caseDemo/$', views.caseDemo),
     url(r'^upload/$', views.upload),
     #传参如正则，因正则中分了2个组在views中方法需要添加2个参数接收传参
     url(r'^admins/(\w+)/(\w+)$', views.adminsModulesDispathcer),

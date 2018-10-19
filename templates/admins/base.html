@@ -20,26 +20,26 @@
     {#<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>#}
     {#<script type="text/javascript" src="js/menu.js"></script>#}
 
-{#    <script type="text/javascript">#}
-{#        $(function(){#}
-{#            var mainSection = $("#main");#}
-            {# 加载news页面的方法 #}
-{#            $("#admins-news").click(#}
-{#                function(){#}
-                    {#alert("click");#}
-{#                    mainSection.load('news/');#}
-                    {#$("#main").load('news.html #main');#}
-                    {#$("#main").html("sadf");#}
-{#                }#}
-{#            );#}
-            {# 添加新闻跳转的方法 #}
-{#            $("#addNews").click(#}
-{#                function(){#}
-{#                    mainSection.load('/news/add/');#}
-{#                }#}
-{#            );#}
-{#        })#}
-{#    </script>#}
+    {#    <script type="text/javascript">#}
+    {#        $(function(){#}
+    {#            var mainSection = $("#main");#}
+    {# 加载news页面的方法 #}
+    {#            $("#admins-news").click(#}
+    {#                function(){#}
+    {#alert("click");#}
+    {#                    mainSection.load('news/');#}
+    {#$("#main").load('news.html #main');#}
+    {#$("#main").html("sadf");#}
+    {#                }#}
+    {#            );#}
+    {# 添加新闻跳转的方法 #}
+    {#            $("#addNews").click(#}
+    {#                function(){#}
+    {#                    mainSection.load('/news/add/');#}
+    {#                }#}
+    {#            );#}
+    {#        })#}
+    {#    </script>#}
 </head>
 
 <body>
@@ -58,14 +58,16 @@
     <div class="left_menu">
         <ul id="nav_dot">
             <li>
-                <h4 class="M9"><span></span>内容管理</h4>
+                <h4 class="M9"><span></span>案例管理</h4>
                 <div class="list-item none">
-                    <a href='#'>企业简介</a>
-                    <a href='#'>证书展示</a>
-                    <a href='#'>集团业务</a>
-{#                    <a href='#' id="admins-news">新闻中心</a>#}
-                    <a href='/admins/news/'>新闻中心</a>
-                    <a href='/admins/caseDemo/'>案例展示</a>
+                    <a href='/admins/caseDemo/'>图片设置</a>
+                </div>
+            </li>
+            <li>
+                <h4 class="M8"><span></span>新闻管理</h4>
+                <div class="list-item none">
+                    <a href='/admins/news/'>修改新闻</a>
+                    <a href='/admins/news/addUI'>添加新闻</a>
                 </div>
             </li>
 
