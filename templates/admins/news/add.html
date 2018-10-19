@@ -7,7 +7,9 @@
 {% block method %}
     添加新闻
 {% endblock %}
-
+{% block username %}
+    {{ request.session.username }}
+{% endblock %}
 {% block main %}
     <div class="icontainer">
         <form action="/admins/newsMethods?m=add" method="post">

@@ -40,9 +40,6 @@ class RegistForm(ModelForm):
             # 'name': TextInput(attrs={'placeholder': 'name'}),
         }
 
-
-
-
         # username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '姓名', 'required': 'required', }),max_length=50, error_messages={'required': 'username不能为空', })
     # sex = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '性别', 'required': 'required', }),max_length=50, error_messages={'required': 'username不能为空', })
     # age = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '年龄', 'required': 'required', }),max_length=50, error_messages={'required': 'username不能为空', })
@@ -63,9 +60,6 @@ class RegistForm(ModelForm):
     # wanttosay = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '我想说', 'required': 'required', }),max_length=50, error_messages={'required': 'username不能为空', })
 
 
-
-
-
 # 定义检测登录的装饰器
 def check_login(func):
     def wrapper(request, *args, **kwargs):
@@ -76,7 +70,8 @@ def check_login(func):
             return func(request, *args, **kwargs)
         else:
             # print('fou')
-            return redirect('/login/')
+            return redirect('/admins/login/')
+
     return wrapper
 
 
@@ -93,8 +88,6 @@ def adduser(request):
         return HttpResponse("<script>alert('成功');window.location.href='/login/';</script>")
 
 
-
-
 def global_settings(request):
     '''
     此函数用来提供给模板中直接调用settings中的全局变量
@@ -107,6 +100,7 @@ def global_settings(request):
         'CONTACT_TEL': settings.CONTACT_TEL,
     }
 
+
 def do_logout(request):
     try:
         if request.user.is_authenticated():
@@ -117,6 +111,48 @@ def do_logout(request):
     except Exception as e:
         print(e)
         return HttpResponseRedirect('/index/')
+
+
+@csrf_exempt
+def alogin(request):
+    lf = LogForm()
+    ret = {}
+    ret['lf'] = lf
+
+    if request.method == 'POST':
+        checkForm = LogForm(request.POST)
+        if checkForm.is_valid():
+            print(checkForm.cleaned_data['username'], checkForm.cleaned_data['password'])
+            try:
+                user = User.objects.get(username=checkForm.cleaned_data['username'])
+                if user.check_password(checkForm.cleaned_data['password']):
+                    print('passwd:{}'.format(checkForm.cleaned_data['password']))
+                    login(request, user)
+                    # return HttpResponse("<script>alert('登录成功');window.location.href='/admins/';</script>")
+                    return HttpResponseRedirect('/admins/')
+                else:
+                    ret['error'] = '帐号或密码错误，请重新输入。'
+                    ret['lf'] = checkForm
+
+            except Exception as e:
+                print(e)
+                ret['error'] = '帐号或密码错误，请重新输入。'
+                ret['lf'] = checkForm
+
+        else:
+            errobj = checkForm.errors
+            print(type(errobj))
+
+            es = checkForm.errors.as_json()
+            print(type(es))
+            err = es.split('"')[-2]
+            print(err)
+            ret['error'] = err
+            ret['lf'] = checkForm
+
+    return render(request, 'admins/login.html', ret)
+
+
 @csrf_exempt
 def do_login(request):
     login_user = request.user.username
@@ -125,8 +161,6 @@ def do_login(request):
         'login_user': login_user,
         'error': '',
     }
-
-
 
     lf = LogForm()
     ret['lf'] = lf
@@ -161,41 +195,55 @@ def do_login(request):
             ret['error'] = err
             ret['lf'] = checkForm
 
-
     if request.method == 'POST':
         print(request.POST)
-
-
-
 
     return render(request, 'login.html', ret)
 
 
-#后台管理页面
+# 后台管理页面
+@check_login
 def admins(request):
 
-    ret = {}
+
+
+    login_user = request.user.username
+    request.session['username'] = login_user
+    print(request.session['username'])
+    ret = {
+        'login_user': login_user,
+    }
+    print(login_user)
+
+
+    method = request.GET.get('m')
+    if method == 'logout':
+        do_logout(request)
+        return HttpResponseRedirect('/index/')
+
+
+
 
     return render(request, 'admins/index.html', ret)
 
 
-
-
-
-#news页面
+# news页面
+@check_login
 @csrf_exempt
 def news(request):
-    #!!!!!!!!!!!!!!!!!!!!!!!!!!需要做分页
-    #获得所有新闻返回到页面
+    login_user = request.user.username
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!需要做分页
+    # 获得所有新闻返回到页面
     news = New.objects.all().order_by('-create_date')
     ret = {
         'news': news,
+        'login_user': login_user,
     }
 
     return render(request, 'admins/news.html', ret)
 
 
-#将静态文件夹中的图片同步到数据库中的方法，只在初始化使用
+# 将静态文件夹中的图片同步到数据库中的方法，只在初始化使用
 def synStaticDircaseDemoPic2DB():
     '''
     将静态文件夹中的图片同步到数据库中的方法，只在初始化使用
@@ -209,7 +257,7 @@ def synStaticDircaseDemoPic2DB():
     # file_names = itools.retrive(rootdir=rootdir)['files']
     caseShowPics = itools.retrive(rootdir=caseShowPicsDir)['files']
     print(caseShowPics)
-    #遍历所有案例展示的图片地址存入到集合中
+    # 遍历所有案例展示的图片地址存入到集合中
     for filename in caseShowPics:
         filePaths.append(caseShowPicsDir + filename)
 
@@ -219,32 +267,37 @@ def synStaticDircaseDemoPic2DB():
         photo = Photo()
         photo.file_path = i
         photo.file_name = i.split('/')[-1]
+        photo.module = photo.CASEDEMO
         photo.save()
 
-#案例展示页面
+
+# 案例展示页面
+@check_login
 @csrf_exempt
 def acaseDemo(request):
-
-
     '''
     初始化的时候需要调用synStaticDircaseDemoPic2DB（）
     :param request:
     :return:
     '''
+    login_user = request.user.username
+    ret = {
+        'login_user': login_user,
+    }
     method = request.GET.get('m')
     if method == 'setTop':
-        print('in caseDemo setTop')
+        print('in acaseDemo setTop')
         picID = request.GET.get('id', None)
         if picID:
             pObj = Photo.objects.get(uuid=picID)
-            #设置图片置顶
+            # 设置图片置顶
             pObj.is_top = True
             # pObj.upload_date = itools.getCurrentDateTime()
             pObj.save()
-            #返回到页面（最下面的方法访问index）
+            # 返回到页面（最下面的方法访问index）
             return HttpResponseRedirect('/admins/caseDemo/')
     elif method == 'untop':
-        print('in caseDemo untop')
+        print('in acaseDemo untop')
         picID = request.GET.get('id', None)
         if picID:
             pObj = Photo.objects.get(uuid=picID)
@@ -254,80 +307,167 @@ def acaseDemo(request):
             pObj.save()
             # 返回到页面（最下面的方法访问index）
             return HttpResponseRedirect('/admins/caseDemo/')
+    elif method == 'del':
+        print('in acaseDemo del')
+        picID = request.GET.get('id', None)
+        if picID:
+            pObj = Photo.objects.get(uuid=picID)
+            # 删除照片
+            pObj.is_del = True
+            pObj.save()
+            return HttpResponseRedirect('/admins/caseDemo/')
+    # 上传图片页面
+    elif method == 'uploadCasePicUI':
+        print('in acaseDemo uploadCasePicUI')
 
+        return render(request, 'admins/caseDemo/add.html')
+    elif method == 'uploadCasePic':
+        print('in acaseDemo uploadCasePic')
 
-    #获得所有展示照片返回到页面
-    #!!!!!!!!!!!!!!!!!!!!!!!!!!需要做分页
+        # 获得页面的文件保存到磁盘和数据库
+        # 接收来自页面POST上传的文件存入指定文件夹（需提取函数）
+        uploadFile = request.FILES.get('uploadInput1')
+        # print(type(uploadFile))
+        filename = str(int(time.time())) + uploadFile._name
+        path = STATIC_FOR_VIEW + '/images/{}/{}'.format('caseshow', filename)
+        # print(path)
+        # print(filename)
+        with open(path, 'wb', buffering=0) as f:
+            f.write(uploadFile.file.getvalue())
+        # 写入数据库（文件地址）
+
+        Photo(
+            file_path=path,
+            file_name=filename,
+            upload_user=None,
+            module=Photo.NEWS
+        ).save()
+
+        return HttpResponseRedirect('/admins/caseDemo/')
+
+    # 获得所有展示照片返回到页面
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!需要做分页
     # demoPics = []
-    photoObjs = Photo.objects.all().order_by('-upload_date')
+    # photoObjs = Photo.objects.all().order_by('-upload_date')
+    photoObjs = Photo.objects.filter(is_del=False).order_by('-upload_date')
     # for photoObj in photoObjs:
     #     demoPics.append(photoObj.file_name)
 
-    ret = {
-        # 'demoPics': demoPics,
-        'demoPics': photoObjs,
-    }
+    ret['demoPics'] = photoObjs
 
     return render(request, 'admins/caseDemo/index.html', ret)
 
 
+# admins回收站的方法集
+@check_login
+def arecyclePics(request):
+    login_user = request.user.username
+    ret = {
+        'login_user': login_user,
+    }
+    method = request.GET.get('m')
+    # 回收站撤销的方法
+    if method == 'undo':
+        print('in recycle undo')
+        picID = request.GET.get('id', None)
+        if picID:
+            pObj = Photo.objects.get(uuid=picID)
+            pObj.is_del = False
+            pObj.save()
+            # 返回到页面（最下面的方法访问index）
+            return HttpResponseRedirect('/admins/recycle/pics')
+    # 回收站彻底删除文件的方法
+    # 先删除数据库，再删除磁盘上的文件
+    if method == 'del':
+        print('in recycle del')
+        picID = request.GET.get('id', None)
+        if picID:
+            pObj = Photo.objects.get(uuid=picID)
+            filename = pObj.file_name
+            module = pObj.module
+            filePath = STATIC_FOR_VIEW + '/images/{}/{}'.format(module, filename)
+            print('del --- {}'.format(filePath))
+            # 删除磁盘文件
+            if os.path.exists(filePath):
+                os.remove(filePath)
+            # 从数据库中删除
+            pObj.delete()
+            # 返回到页面（最下面的方法访问index）
+            return HttpResponseRedirect('/admins/recycle/pics')
+
+    photoObjs = Photo.objects.filter(is_del=True).order_by('-upload_date')
+    ret['demoPics'] = photoObjs
+    return render(request, 'admins/recycle/pic.html', ret)
+
+
+@check_login
 def caseDemo(request):
-
-
     '''
     展示案例演示图片的方法
     初始化的时候需要调用synStaticDircaseDemoPic2DB（）
     :param request:
     :return:
     '''
+    login_user = request.user.username
+    ret = {
+        'login_user': login_user,
+    }
+    method = request.GET.get('m')
+    if method == 'detail':
+        print('in caseDemo detail')
+        picID = request.GET.get('id', None)
+        if picID:
+            pObj = Photo.objects.get(uuid=picID)
+            ret["pic"] = pObj
+            # 返回到页面（最下面的方法访问index）
+            return render(request, 'caseDemo/detail.html', ret)
 
-
-
-    #获得所有展示照片返回到页面
-    #!!!!!!!!!!!!!!!!!!!!!!!!!!需要做分页
+    # 获得所有展示照片返回到页面
+    # !!!!!!!!!!!!!!!!!!!!!!!!!!需要做分页
     demoPics = []
     photoObjs = Photo.objects.all().order_by('-upload_date')
     for photoObj in photoObjs:
         demoPics.append(photoObj.file_name)
-
-    ret = {
-        'demoPics': demoPics,
-        'photoObjs': photoObjs,
-    }
+    ret["demoPics"] = demoPics
+    ret["photoObjs"] = photoObjs
 
     return render(request, 'caseDemo/index.html', ret)
 
 
-
-
-
-#添加news页面
+# 添加news页面
+@check_login
 @csrf_exempt
 def addNews(request):
-    print('in addnews')
+    login_user = request.user.username
     ret = {
+        'login_user': login_user,
     }
+    print('in addnews')
     print(request.method)
 
     # 接受来自页面的POST请求
     # if requestMethod == "POST":
     #     print(requestMethod)
 
-
     return render(request, 'admins/news/add.html', ret)
 
 
-#上传文件的方法
+# 上传文件的方法
+@check_login
 @csrf_exempt
 def upload(request):
+    login_user = request.user.username
+    ret = {
+        'login_user': login_user,
+    }
     rmethod = request.method
     module = request.GET.get('module')
     print(module)
     if rmethod == "POST":
         print('in upload')
-        #新闻模块的图片上传
+        # 新闻模块的图片上传
         if module == "news":
-            #接收来自页面POST上传的文件存入指定文件夹（需提取函数）
+            # 接收来自页面POST上传的文件存入指定文件夹（需提取函数）
             uploadFile = request.FILES.get('uploadInput')
             # print(type(uploadFile))
             filename = str(int(time.time())) + uploadFile._name
@@ -336,11 +476,13 @@ def upload(request):
             # print(filename)
             with open(path, 'wb', buffering=0) as f:
                 f.write(uploadFile.file.getvalue())
-            #写入数据库（文件地址）
+            # 写入数据库（文件地址）
+
             Photo(
                 file_path=path,
                 file_name=filename,
-                upload_user=None
+                upload_user=None,
+                module=Photo.NEWS
             ).save()
 
         ret = {"status": "ok1", 'filename': filename}
@@ -349,9 +491,13 @@ def upload(request):
         return HttpResponse(retJson)
 
 
-#新闻的方法集
+# 新闻的方法集
+@check_login
 def newsMethods(request):
-
+    login_user = request.user.username
+    ret = {
+        'login_user': login_user,
+    }
     users = User.objects.all()
     try:
         user = users[0]
@@ -362,13 +508,13 @@ def newsMethods(request):
     method = request.GET.get('m', None)
     requestMethod = request.method
     # if requestMethod == "POST":
-    #添加新闻
+    # 添加新闻
     if method == 'add':
         try:
             title = str(request.POST.get("title", None))
             content = str(request.POST.get("content", None))
 
-            #判断参数是否为空
+            # 判断参数是否为空
 
             New.objects.create(
                 title=title,
@@ -378,29 +524,27 @@ def newsMethods(request):
             return HttpResponseRedirect("/admins/news/")
         except Exception as e:
             print(e)
-            #需要一个错误页面
+            # 需要一个错误页面
     # elif requestMethod == "GET":
-    #删除方法
+    # 删除方法
     if method == "del":
-        #获得参数
+        # 获得参数
         newsUuid = request.GET.get('id')
-        #删除新闻的方法,以后提取为函数
+        # 删除新闻的方法,以后提取为函数
         delNews = New.objects.get(uuid=newsUuid)
-        #将外键清空
+        # 将外键清空
         delNews.user = None
         delNews.delete()
         return HttpResponseRedirect("/admins/news/")
-    #修改新闻的UI
+    # 修改新闻的UI
     elif method == 'modifyUI':
-        #获得参数
+        # 获得参数
         newsUuid = request.GET.get('id')
         # #删除新闻的方法,以后提取为函数
         modifyNews = New.objects.get(uuid=newsUuid)
-        ret = {
-            'modifyNews': modifyNews,
-        }
+        ret['modifyNews'] = modifyNews
         return render(request, 'admins/news/modify.html', ret)
-    #修改新闻的方法
+    # 修改新闻的方法
     elif method == 'modify':
 
         print('in news modify')
@@ -409,8 +553,6 @@ def newsMethods(request):
         print(filename)
         pObj = Photo.objects.get(file_name=filename)
         print(pObj)
-
-
 
         title = str(request.POST.get("title", None))
         content = str(request.POST.get("content", None))
@@ -423,7 +565,7 @@ def newsMethods(request):
         news.news_photo = pObj
         news.save()
         return HttpResponseRedirect("/admins/news/")
-    #查找新闻的方法
+    # 查找新闻的方法
     elif method == 'search':
         print('in news search')
         searchName = request.POST.get('searchName')
@@ -435,17 +577,16 @@ def newsMethods(request):
         }
         return render(request, 'admins/news.html', ret)
 
-
     return HttpResponse("ok newsMethods")
 
 
-
-#test页面
+# test页面
 def testpage(request, a1, a2):
     print("in testpage!")
     ret = {}
     print(a1, a2)
     return render(request, 'admins/test.html', ret)
+
 
 # #test页面
 # def testpage1(request, module, method):
@@ -454,27 +595,27 @@ def testpage(request, a1, a2):
 #     ret = {}
 #     return HttpResponse("ok")
 
-#test页面
+# test页面
+@check_login
 def adminsModulesDispathcer(request, module=None, method=None):
+    login_user = request.user.username
     print("in adminsModulesDispathcer!")
     print(module, method)
-    ret = {}
-
+    ret = {
+        'login_user': login_user,
+    }
 
     if module == "news":
         if method == "addUI":
             return render(request, "admins/news/add.html", ret)
-
-
 
     return HttpResponse("ok")
 
 
 @csrf_exempt
 def regist(request):
-    ret ={}
+    ret = {}
     rf = RegistForm()
-
 
     attrs = (
         '姓名',
@@ -515,7 +656,6 @@ def regist(request):
     }
     ret['attrs'] = attrs
     ret['rf'] = rf
-
 
     if request.method == 'POST':
         # print(request.POST)
@@ -594,7 +734,6 @@ def regist(request):
         # for key, val in attrs.items():
         #     attrs[key] = request_attrs[key]
 
-
         # Info.objects.create(
         #     name=attrs['姓名'].strip(),
         #     sex=attrs['性别'].strip(),
@@ -618,12 +757,10 @@ def regist(request):
 
         return HttpResponse('信息已成功提交。(js未启用)')
 
-
-
-
     return render(request, 'regist.html', ret)
-def index(request):
 
+
+def index(request):
     ret = {
         'tel': CONTACT_TEL,
         'com_name': COMPANY_NAME,
@@ -639,17 +776,26 @@ def index(request):
     file_names = itools.retrive(rootdir=rootdir)['files']
     # caseShowPics = itools.retrive(rootdir=caseShowPicsDir)['files']
 
+    retPics = []
+    # 如果数据库中没有图片则同步所有caseshow图片到数据库
+    # caseShowPics = Photo.objects.all().order_by('-upload_date')
+    caseShowPics = Photo.objects.filter(is_top=True).order_by('-upload_date')
+    retPics.extend(caseShowPics)
+    if len(caseShowPics) < 8:
+        shortNum = 8 - len(caseShowPics)
+        caseShowPics1 = Photo.objects.filter(is_del=False).order_by('-upload_date')
+        retPics.extend(caseShowPics1)
+    print(len(retPics))
 
-    #如果数据库中没有图片则同步所有caseshow图片到数据库
-    caseShowPics = Photo.objects.all().order_by('-upload_date')
-    if len(caseShowPics) < 1:
+    if len(Photo.objects.all().order_by('-upload_date')) < 1:
         synStaticDircaseDemoPic2DB()
         pass
 
-
     ret['file_names'] = file_names
-    ret['caseShowPics'] = caseShowPics[:8]
+    # ret['caseShowPics'] = caseShowPics[:8]
+    ret['caseShowPics'] = retPics[:8]
     return render(request, 'index.html', ret)
+
 
 def join_us(request):
     # return HttpResponse('asdf')
@@ -658,6 +804,7 @@ def join_us(request):
         lines = f.readlines()
     ret['lines'] = lines
     return render(request, 'joinus.html', ret)
+
 
 @check_login
 def info(request):
@@ -673,16 +820,10 @@ def info(request):
             try:
                 uuid = request.GET.get('uuid')
                 Info.objects.get(uuid=uuid).delete()
-                return HttpResponse("<script>alert('ID为：{}的信息已成功删除.');window.location.href='/info/';</script>".format(uuid))
+                return HttpResponse(
+                    "<script>alert('ID为：{}的信息已成功删除.');window.location.href='/info/';</script>".format(uuid))
             except Exception as e:
                 print(e)
-
-
-
-
-
-
-
 
     infos = Info.objects.all().order_by('-create_date')
 
@@ -698,10 +839,8 @@ def info(request):
     ret['pages'] = infos.paginator.num_pages
     ret['count'] = infos.paginator.count
 
-
     ret['infos'] = infos
     return render(request, 'infos.html', ret)
-
 
 
 def rongyu(request):
@@ -719,9 +858,8 @@ def rongyu(request):
             id = request.GET.get('id')
             ret['pic'] = ids[int(id) - 1]
 
-
-
     return render(request, 'rongyu.html', ret)
+
 
 @check_login
 def detail(request):
@@ -751,8 +889,6 @@ def detail(request):
             ('自我描述', information.wanttosay),
         )
 
-
-
         ret['info'] = retinfo
 
     return render(request, 'detail.html', ret)
@@ -766,14 +902,11 @@ def userfuncs(request):
         'login_user': login_user,
     }
 
-
     if request.method == 'GET':
         act = request.GET.get('act')
         if act == 'logout':
             do_logout(request)
             return HttpResponseRedirect('/index/')
             # return HttpResponse('logout')
-
-
 
     return render(request, 'userfuncs.html', ret)

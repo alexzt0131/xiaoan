@@ -4,7 +4,15 @@
 {% block module %}HOME{% endblock %}
 
 {% block username %}
-    alex
+    {{ request.session.username }}
+{% endblock %}
+{% block logout-Li-a %}
+    {% if request.session.username %}
+        <li><a href="/admins/?m=logout">退出</a></li>
+    {% else %}
+        <li><a href="#">诶登录</a></li>
+    {% endif %}
+
 {% endblock %}
 
 {% block main %}

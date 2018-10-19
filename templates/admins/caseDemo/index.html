@@ -1,4 +1,4 @@
-{% extends "admins/base.html" %}
+{% extends "admins/index.html" %}
 {% load static %}
 {% block module %}
     内容管理
@@ -6,7 +6,9 @@
 {% block method %}
     案例展示
 {% endblock %}
-
+{% block username %}
+    {{ request.session.username }}
+{% endblock %}
 {% block main %}
 
     <div class="icontainer">
@@ -23,7 +25,7 @@
                         {% else %}
                             <a href="/admins/caseDemo/?m=setTop&id={{ i.uuid }}">模块置顶</a>
                         {% endif %}
-                        <a href="#">删除</a>
+                        <a href="/admins/caseDemo/?m=del&id={{ i.uuid }}">删除</a>
                     </div>
                 </div>
             {% endfor %}

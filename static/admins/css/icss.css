@@ -62,5 +62,7 @@ table {
     align-items: center;
 
 }
-
+.case-pics-container div{
+    margin-left: 1.5%;
+}
 

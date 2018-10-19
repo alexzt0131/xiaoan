@@ -11,6 +11,11 @@ class User(AbstractUser):     #继承AbstractUser
 
 
 class Photo(models.Model):
+    CASEDEMO = 'caseshow'
+    CERTIFY = 'certificate'
+    LOGO = 'logo'
+    NEWS = 'news'
+    XUANCHUAN = 'xuanchuan'
     uuid = models.UUIDField(default=uuid.uuid4, null=False, verbose_name='uuid')
     file_path = models.CharField(max_length=150, default='', verbose_name='文件保存路径')
     file_name = models.CharField(max_length=150, default='', verbose_name='文件名')
@@ -18,6 +23,7 @@ class Photo(models.Model):
     is_del = models.BooleanField(default=False, verbose_name="是否已删除(文件并未删除只是做标记)")
     upload_date = models.CharField(max_length=40, default=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), verbose_name='创建时间')
     upload_user = models.ForeignKey(User, null=True)
+    module = models.CharField(max_length=150, verbose_name='所在模块')
 
     def __str__(self):
         return '{}-{}-{}'.format(self.upload_user, self.upload_date, self.file_name)

@@ -82,7 +82,26 @@ $(function () {
         });
     });
 
-
+    $(function () {
+        //将fileinput选定的图片直接预览显示在指定的img中
+        $("#uploadInput1").on("change", function () {
+            var $file = $(this);
+            var fileObj = $file[0];
+            var windowURL = window.URL || window.webkitURL;
+            var dataURL;
+            // var $img = $("img");
+            var img = $("#newsPhoto");
+            if (fileObj && fileObj.files && fileObj.files[0]) {
+                dataURL = windowURL.createObjectURL(fileObj.files[0]);
+                img.attr('src', dataURL);
+            } else {
+                dataURL = $file.val();
+                var imgObj = document.getElementById("preview");
+                imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+                imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
+            }
+        });
+    });
 });
 
 // //文件上传(成功)

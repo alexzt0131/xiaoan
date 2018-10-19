@@ -1,0 +1,31 @@
+{% extends "admins/index.html" %}
+{% load static %}
+{% block module %}
+    回收站
+{% endblock %}
+{% block method %}
+    最新删除图片
+{% endblock %}
+{% block username %}
+    {{ request.session.username }}
+{% endblock %}
+{% block main %}
+
+    <div class="icontainer">
+        <div class="pics-frame">
+            {% for i in demoPics %}
+                <div class="pic-wraper" style="margin-left: 1.7em;">
+                    <div>
+                        <img src="{% static 'images/caseshow/' %}{{ i.file_name }}" width="180em;" height="150em"/>
+                    </div>
+                    <div class="options">
+                        <a href="/admins/recycle/pics/?m=undo&id={{ i.uuid }}" style="color: red">撤销</a>
+                        <a href="/admins/recycle/pics/?m=del&id={{ i.uuid }}">删除</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock %}

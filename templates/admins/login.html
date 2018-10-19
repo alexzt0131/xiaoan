@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>消安模板管理系统</title>
+    {#备用，都该好后直接使用#}
+    <link type="text/css" rel=stylesheet href="{% static 'admins/css/style.css' %}">
+    {#    <link type="text/css" rel=stylesheet href="{% static 'admins/css/icss.css' %}">#}
+    {#    <script type="text/javascript" src="{% static 'admins/js/jquery-1.8.3.min.js' %}"></script>#}
+    {#    <script type="text/javascript" src="{% static 'admins/js/ajaxfileupload.js' %}"></script>#}
+    {#    <script type="text/javascript" src="{% static 'admins/js/menu.js' %}"></script>#}
+    {#    <script type="text/javascript" src="{% static 'admins/js/ijs.js' %}"></script>#}
+    <style>
+        .lcontainer{
+            {#border:1px solid red;#}
+            background-color: whitesmoke;
+            position: relative;
+            margin: 5% 0 0 25%;
+            padding: 11%;
+            font-size: 25px;
+            width: 23%;
+        }
+        .lcontainer div{
+            padding: 3%;
+            {#border:41px solid green;#}
+        }
+        .input_default{
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="top"></div>
+<div id="header">
+    <div class="logo">消安后台管理系统</div>
+    <div class="navigation">
+        <ul>
+
+        </ul>
+    </div>
+</div>
+
+<div id="content" style="background-color: white;">
+        <form action="/admins/login/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="lcontainer" >
+                <div>
+                    <span><label>用户名：</label>{{ lf.username }}</span>
+                </div>
+                <div>
+                    <span><label>密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>{{ lf.password }}</span>
+                </div>
+                <div style=""><input class="input_default" type="submit" value="登录"/></div>
+            </div>
+        </form>
+
+</div>
+
+<div class="bottom"></div>
+<div id="footer">
+    <p>Copyright© 2015 版权所有 京ICP备05019125号-10 来源:<a href="http://sc.jinxun0579.com/" target="_blank">金讯素材</a></p></div>
+<script>navList(12);</script>
+</body>
+</html>

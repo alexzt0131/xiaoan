@@ -1,5 +1,8 @@
 {% extends "admins/index.html" %}
 {% load static %}
+{% block username %}
+    {{ request.session.username }}
+{% endblock %}
 {% block main %}
     <div class="icontainer">
         <form id="newsform" action="/admins/newsMethods?m=modify&id={{ modifyNews.uuid }}" method="post"

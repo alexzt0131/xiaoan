@@ -13,7 +13,9 @@
         }
     </style>
 {% endblock %}
-
+{% block username %}
+    {{ request.session.username }}
+{% endblock %}
 {% block module %}
     新闻管理
 {% endblock %}
