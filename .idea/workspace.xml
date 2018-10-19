@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eecfee69-c638-4606-bf28-38560891b705" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/website/views.py" afterPath="$PROJECT_DIR$/website/views.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/banner/banner1.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/banner/banner3.jpeg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/images/banner/banner4.jpeg" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/static/images/xuanchuan/banner1.jpeg" afterPath="$PROJECT_DIR$/static/images/banner/banner1.jpeg" />
+      <change beforePath="$PROJECT_DIR$/static/images/xuanchuan/banner3.jpeg" afterPath="$PROJECT_DIR$/static/images/banner/banner3.jpeg" />
+      <change beforePath="$PROJECT_DIR$/static/images/xuanchuan/banner4.jpeg" afterPath="$PROJECT_DIR$/static/images/banner/banner4.jpeg" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,11 +27,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="275" column="13" lean-forward="false" selection-start-line="275" selection-start-column="4" selection-end-line="275" selection-end-column="13" />
+            <state relative-caret-position="84">
+              <caret line="240" column="5" lean-forward="true" selection-start-line="240" selection-start-column="5" selection-end-line="240" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="79" column="63" lean-forward="true" selection-start-line="79" selection-start-column="63" selection-end-line="79" selection-end-column="63" />
+              <folding>
+                <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#2;n#ul#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basehtml.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/basehtml.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="34" column="57" lean-forward="true" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -76,28 +106,6 @@
             <state relative-caret-position="144">
               <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modify.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/admins/news/modify.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/admins/caseDemo/add.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-              <folding>
-                <marker date="1539964169065" expanded="false" signature="687:700" ph="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -189,7 +197,6 @@
         <option value="$PROJECT_DIR$/tools/run.py" />
         <option value="$PROJECT_DIR$/templates/basehtml.html" />
         <option value="$PROJECT_DIR$/templates/caseDemo/index.html" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/static/admins/css/style.css" />
         <option value="$PROJECT_DIR$/templates/caseDemo/detail.html" />
         <option value="$PROJECT_DIR$/static/admins/css/icss.css" />
@@ -208,6 +215,7 @@
         <option value="$PROJECT_DIR$/templates/admins/caseDemo/index.html" />
         <option value="$PROJECT_DIR$/static/ver.txt" />
         <option value="$PROJECT_DIR$/website/views.py" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
       </list>
     </option>
   </component>
@@ -251,6 +259,42 @@
               <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
               <item name="script" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="banner" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="xuanchuan" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xiaoan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xiaoan" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="admins" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -266,13 +310,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/images/xuanchuan" />
       <recent name="$PROJECT_DIR$/static/images/caseshow" />
       <recent name="$PROJECT_DIR$/templates/admins/caseDemo" />
       <recent name="$PROJECT_DIR$/static/images/bak" />
-      <recent name="$PROJECT_DIR$/static/images/xuanchuan" />
       <recent name="$PROJECT_DIR$/static/images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/images/banner" />
       <recent name="$PROJECT_DIR$/static/images" />
     </key>
   </component>
@@ -448,7 +493,7 @@
     <entry file="file://$PROJECT_DIR$/static/banner2.png" />
     <entry file="file://$PROJECT_DIR$/static/banner3.png" />
     <entry file="file://$PROJECT_DIR$/static/banner.png" />
-    <entry file="file://$PROJECT_DIR$/static/images/xuanchuan/banner1.jpeg">
+    <entry file="file://$PROJECT_DIR$/static/images/banner/banner1.jpeg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -458,23 +503,15 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/images/xuanchuan/banner4.jpeg">
+    <entry file="file://$PROJECT_DIR$/static/images/banner/banner4.jpeg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/images/xuanchuan/banner2.jpeg" />
-    <entry file="file://$PROJECT_DIR$/static/images/xuanchuan/banner3.jpeg">
+    <entry file="file://$PROJECT_DIR$/static/images/banner/banner3.jpeg">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="79" column="58" lean-forward="false" selection-start-line="79" selection-start-column="58" selection-end-line="79" selection-end-column="58" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/web-forms.rnc">
@@ -580,14 +617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="65" column="4" lean-forward="false" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/basehtml.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -729,9 +758,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="275" column="13" lean-forward="false" selection-start-line="275" selection-start-column="4" selection-end-line="275" selection-end-column="13" />
+        <state relative-caret-position="84">
+          <caret line="240" column="5" lean-forward="true" selection-start-line="240" selection-start-column="5" selection-end-line="240" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/basehtml.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="34" column="57" lean-forward="true" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="79" column="63" lean-forward="true" selection-start-line="79" selection-start-column="63" selection-end-line="79" selection-end-column="63" />
+          <folding>
+            <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#2;n#ul#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
