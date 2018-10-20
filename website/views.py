@@ -272,6 +272,7 @@ def synStaticDircaseDemoPic2DB():
 
 
 # 案例展示页面
+@check_login
 @csrf_exempt
 def acaseDemo(request):
     '''
@@ -399,7 +400,7 @@ def arecyclePics(request):
     return render(request, 'admins/recycle/pic.html', ret)
 
 
-@check_login
+
 def caseDemo(request):
     '''
     展示案例演示图片的方法

@@ -221,15 +221,15 @@
                 <h3><em>CASE</em></h3>
             </div>
         </div>
-        <div class="scrollable ">
-            <div style="text-align: right; width: 97%; margin-bottom: 1px;">
+        <div class="scrollable " style="height: 50em; padding-top: 5em;">
+            <div style="text-align: right; width: 97%; margin-bottom: 1em;">
                 <span style="font-size: 14px;">
                     <a href="/caseDemo/">更多展示...</a>
                 </span>
             </div>
             <ul>
                 {% for pic in caseShowPics %}
-                    <li>
+                    <li style="height:300px;">
                         {#                        <p><a href=""><img src="{% static 'images/caseshow/' %}{{ pic }}" width="250" height="192"/></a>#}
                         {#                        </p>#}
                         <img src="{% static 'images/caseshow/' %}{{ pic.file_name }}" width="250" height="192"
