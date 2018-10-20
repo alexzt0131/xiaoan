@@ -16,7 +16,7 @@ from django.template.backends import django
 from django.views.decorators.csrf import csrf_exempt
 from django import forms
 from tjbaoan import settings
-from tjbaoan.settings import CONTACT_TEL, COMPANY_NAME, ABOUT_US, STATIC_FOR_VIEW
+from tjbaoan.settings import CONTACT_TEL, COMPANY_NAME, ABOUT_US, STATIC_FOR_VIEW, STATIC_ROOT
 from tools.itools import itools
 from website.models import Info, User, New, Photo
 
@@ -328,12 +328,31 @@ def acaseDemo(request):
         # 接收来自页面POST上传的文件存入指定文件夹（需提取函数）
         uploadFile = request.FILES.get('uploadInput1')
         # print(type(uploadFile))
-        filename = str(int(time.time())) + uploadFile._name
+        try:
+            filename = str(int(time.time())) + uploadFile._name
+            #不能是默认图片或空白
+            if filename == 'blank.png':
+                return HttpResponse('为选择图片!')
+        except Exception as e:
+            return HttpResponse('为选择图片!')
+
         path = STATIC_FOR_VIEW + '/images/{}/{}'.format('caseshow', filename)
-        # print(path)
-        # print(filename)
+
+        #写入到nginx对应的static文件夹
+        path1 = STATIC_ROOT + '/images/{}/'.format('caseshow')
+        try:
+            if not os.path.exists(path1):
+                import sys, stat
+                os.makedirs(path1)
+            with open(path1+filename, 'wb', buffering=0) as f:
+                f.write(uploadFile.file.getvalue())
+        except Exception as e:
+            print('写入文件失败：'.format(path1))
+            print(e)
+
         with open(path, 'wb', buffering=0) as f:
             f.write(uploadFile.file.getvalue())
+
         # 写入数据库（文件地址）
 
         Photo(
@@ -390,6 +409,10 @@ def arecyclePics(request):
             # 删除磁盘文件
             if os.path.exists(filePath):
                 os.remove(filePath)
+            #删除nginx对应static文件夹文件
+            path1 = STATIC_ROOT + '/images/{}/{}'.format('caseshow', filename)
+            if os.path.exists(path1):
+                os.remove(path1)
             # 从数据库中删除
             pObj.delete()
             # 返回到页面（最下面的方法访问index）
@@ -425,7 +448,8 @@ def caseDemo(request):
     # 获得所有展示照片返回到页面
     # !!!!!!!!!!!!!!!!!!!!!!!!!!需要做分页
     demoPics = []
-    photoObjs = Photo.objects.all().order_by('-upload_date')
+    # photoObjs = Photo.objects.all().order_by('-upload_date')
+    photoObjs = Photo.objects.filter(is_del=False).order_by('-upload_date')
     for photoObj in photoObjs:
         demoPics.append(photoObj.file_name)
     ret["demoPics"] = demoPics
@@ -779,11 +803,11 @@ def index(request):
     retPics = []
     # 如果数据库中没有图片则同步所有caseshow图片到数据库
     # caseShowPics = Photo.objects.all().order_by('-upload_date')
-    caseShowPics = Photo.objects.filter(is_top=True).order_by('-upload_date')
+    caseShowPics = Photo.objects.filter(is_top=True).filter(is_del=False).order_by('-upload_date')
     retPics.extend(caseShowPics)
     if len(caseShowPics) < 8:
         shortNum = 8 - len(caseShowPics)
-        caseShowPics1 = Photo.objects.filter(is_del=False).order_by('-upload_date')
+        caseShowPics1 = Photo.objects.filter(is_del=False).filter(is_top=False).order_by('-upload_date')
         retPics.extend(caseShowPics1)
     print(len(retPics))
 

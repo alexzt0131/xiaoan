@@ -138,6 +138,18 @@ function checkDel(uuid) {
 }
 
 
+function checkImg(){
+    //检测图片是否已经选择
+    var picval = $("#uploadInput1").val().length;
+    if (picval == 0){
+        alert("请选择图片!")
+        return;
+    }else{
+        $("#newsform").submit();
+    }
+}
+
+
 
 
 
